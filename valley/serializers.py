@@ -9,6 +9,8 @@ class SystemsSerializer(serializers.ModelSerializer):
 
 
 class StatesSerializer(serializers.ModelSerializer):
+    system_name = serializers.StringRelatedField()
+
     class Meta:
         model = States
         fields = '__all__'

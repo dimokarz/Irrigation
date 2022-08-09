@@ -13,8 +13,8 @@ class UserInline(admin.StackedInline):
     verbose_name_plural = 'Доп. информация'
 
 
-# class UserAdmin(UserAdmin):
-#     inlines = (UserInline,)
+class UserAdmin(UserAdmin):
+    inlines = (UserInline,)
 
 
 admin.site.unregister(User)

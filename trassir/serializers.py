@@ -12,3 +12,11 @@ class CamerasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cameras
         fields = '__all__'
+
+
+# class CamerasSerializer(serializers.ModelSerializer):
+#     cameras_srv = serializers.StringRelatedField()
+#
+#     class Meta:
+#         model = Cameras
+#         fields = '__all__'

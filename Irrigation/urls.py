@@ -24,15 +24,16 @@ admin.site.index_title = 'Администрирование систем пол
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-### Video Servers
+    path('', valley.views.index, name='index'),
+    ### Video Servers
     path('videosrv_list/', trassir.views.videosrv_list, name='videosrv_list'),
-    path('videosrv_list/<int:pk>', trassir.views.cameras_detail, name='videosrv_list'),
+    path('videosrv_list/<int:pk>', trassir.views.videosrv_detail, name='videosrv_list'),
     path('videosrv_create/', trassir.views.videosrv_create, name='videosrv_create'),
     path('videosrv_update/<int:pk>', trassir.views.videosrv_update, name='videosrv_update'),
-### Cameras
-    path('cameras_list', trassir.views.cameras_list, name='cameras_list'),
+    ### Cameras
+    path('cameras_list/', trassir.views.cameras_list, name='cameras_list'),
     path('cameras_list/<int:pk>', trassir.views.cameras_detail, name='cameras_list'),
-### Systems
-    path('systems_list', valley.views.systems_list, name='systems_list'),
-    path('states_list', valley.views.states_list, name='states_list'),
+    ### Systems
+    path('systems_list/', valley.views.systems_list, name='systems_list'),
+    path('states_list/', valley.views.states_list, name='states_list'),
 ]
