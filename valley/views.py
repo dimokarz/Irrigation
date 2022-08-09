@@ -29,3 +29,7 @@ def index(request):
     header = 'Выбор систем полива'
     title = ' - Выбор'
     return render(request, 'index.html', {'header': header, 'title': title, 'systems': systems, 'states': states})
+
+### simple
+def simple(request):
+    pass

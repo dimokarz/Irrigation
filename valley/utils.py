@@ -1,0 +1,3 @@
+### Клавиатура
+class keyList():
+    pass

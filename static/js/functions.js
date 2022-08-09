@@ -12,7 +12,6 @@ function btn_sel() {
             valley.push(inputElems[i].id);
         }
     }
-    alert(duet)
     switch (count) {
         case 1:
             window.open("/simple?first=" + valley[0], "_self");
