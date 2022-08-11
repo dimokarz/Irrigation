@@ -9,23 +9,15 @@
 
     <div class="card shad_box">
         <div class="list-group list-group-flush">
-            {% for state in states %}
+            {% for system in systems %}
                 <label class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-10">
-                            <input class="form-check-input me-1" type="checkbox" id="v_chk{{state.id}}"
-                                   value="{{ state.du }}" name="v_chk{{forloop.counter}}" {% if state.states_ctrl == False %}disabled{% endif %}>&nbsp;&nbsp;{{ state }}
+                            <input class="form-check-input me-1" type="checkbox" id="chk{{ system.id }}"
+                                   value="{{ system.system_duet }}">&nbsp;&nbsp;{{ system.system_name }}</input>
                         </div>
                         <div class="col-2">
-                            {% if state.states_dir == 'N' %}
-                                {% if state.states_ctrl == False %}
-                                    <span class="badge bg-danger" style="width: 100px;">Не доступна</span>
-                                {% else %}
-                                    <span class="badge bg-danger" style="width: 100px;">Остановлена</span>
-                                {% endif %}
-                            {% else %}
-                                <span class="badge bg-success" style="width: 100px;">Запущена</span>
-                            {% endif %}
+                            <span class="badge bg-warning text-dark" style="width: 100px;">Проверка ...</span>
                         </div>
                     </div>
                 </label>
