@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+    // let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    // let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    //     return new bootstrap.Popover(popoverTriggerEl);
+    // });
+
     switch (document.location.pathname) {
         case '/login/':
             $('body').css('background-size', 'cover');
@@ -9,6 +15,7 @@ $(document).ready(function() {
             break;
         default:
             $('body').css('background-image', '');
+
             //Статусы систем
             $.getJSON('/states_list', function (data){
                 for (let i = 0; i < 2; i++) {
@@ -17,21 +24,29 @@ $(document).ready(function() {
                     }
                 }
                 setTimeout(function () {
-                    for (key in data) {
-                        $('#spState' + key).removeClass('bg-warning');
-                        $('#spState' + key).removeClass('text-dark');
+                    for (let key in data) {
+                        $('#spState' + data[key].states_system).removeClass('bg-warning');
+                        $('#spState' + data[key].states_system).removeClass('text-dark');
                         if (data[key].states_ctrl == false) {
-                            $('#spState' + key).addClass('bg-secondary');
-                            $('#spState' + key).text('Не доступна');
+                            $('#spState' + data[key].states_system).addClass('bg-secondary');
+                            $('#spState' + data[key].states_system).text('Не доступна');
                         }
                         else {
+                            $('#chk' + data[key].states_system).prop('disabled', false)
                             if (data[key].states_dir == 'N') {
-                                $('#spState' + key).addClass('bg-danger');
-                                $('#spState' + key).text('Остановлена');
+                                $('#spState' + data[key].states_system).addClass('bg-danger');
+                                $('#spState' + data[key].states_system).text('Остановлена');
                             }
                             else {
-                                $('#spState' + key).addClass('bg-success');
-                                $('#spState' + key).text('Запущена');
+                                $('#spState' + data[key].states_system).addClass('bg-success');
+                                $('#spState' + data[key].states_system).text('Запущена');
+                                $('#spState' + data[key].states_system).popover({
+                                    trigger: 'hover',
+                                    html: true,
+                                    content: function () {
+                                        return $('#pop_detail').html();
+                                    }
+                                });
                             }
                         }
                     }
@@ -39,4 +54,5 @@ $(document).ready(function() {
             });
             break;
     }
+
 });

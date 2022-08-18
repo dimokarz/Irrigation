@@ -14,11 +14,13 @@
                     <div class="row">
                         <div class="col-10">
                             <input class="form-check-input me-1" type="checkbox" id="chk{{ system.id }}"
-                                   value="{{ system.system_duet }}">&nbsp;&nbsp;{{ system.system_name }}</input>
+                                   value="{{ system.system_duet }}" disabled>&nbsp;&nbsp;{{ system.system_name }}</input>
                         </div>
                         <div class="col-2">
-                            <span class="badge bg-warning text-dark" id="spState{{ forloop.counter0 }}"
-                                  style="width: 100px;">Проверка ...</span>
+                            <span class="badge bg-warning text-dark popover-content" id="spState{{ system.id }}"  style="width: 100px;"
+                                  data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover"
+                                  title="{{ system.system_name }}" data-bs-content="Ебеньк">Проверка ...
+                            </span>
                         </div>
                     </div>
                 </label>
@@ -27,5 +29,18 @@
     </div>
     <br><br>
     <div class="card"><button type="button" class="btn btn-primary" id="btn_sel" disabled>Открыть</button></div>
+
+    <div id="pop_detail" style="display: none;">
+        <div>
+            <div class="row border-bottom"">
+                <div class="col-6"><strong>Направление:</strong></div>
+                <div class="col-3"><p class="text-start" id="popDir"></p>123</div>
+            </div>
+            <div class="row border-bottom">
+                <div class="col-6"><strong>Вода:</strong></div>
+                <div class="col-3"><p class="text-start" id="popWat"></p>123</div>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
