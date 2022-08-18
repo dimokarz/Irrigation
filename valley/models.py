@@ -52,7 +52,7 @@ class States(models.Model):
         ordering = ['pk']
 
     states_system = models.OneToOneField(Systems, on_delete=models.CASCADE, primary_key=True,
-                                         related_name='status', verbose_name='Система')
+                                         related_name='states', verbose_name='Система')
     states_ctrl = models.BooleanField(default=False, verbose_name='Управление')
     states_fail = models.BooleanField(default=False, verbose_name='Авария')
     DIRECTIONS = [('N', '-'), ('F', 'Вперёд'), ('R', 'Назад')]

@@ -6,7 +6,7 @@ $('.form-check-input').on('click', function() {
 $('.btn').on('click', function (e) {
    switch (e.target.id) {
        case 'btn_sel':
-           btn_sel();
+           btnSel();
            break;
    }
 });

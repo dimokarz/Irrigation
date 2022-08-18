@@ -1,10 +1,6 @@
+let irrigLst
+
 $(document).ready(function() {
-
-    // let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    // let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    //     return new bootstrap.Popover(popoverTriggerEl);
-    // });
-
     switch (document.location.pathname) {
         case '/login/':
             $('body').css('background-size', 'cover');
@@ -18,6 +14,7 @@ $(document).ready(function() {
 
             //Статусы систем
             $.getJSON('/states_list', function (data){
+                irrigLst = data
                 for (let i = 0; i < 2; i++) {
                     for (let y = 0; y <= data.length; y++) {
                         $('#spState' + y).fadeTo('slow', 0.0).fadeTo('slow', 1.0);
@@ -43,9 +40,7 @@ $(document).ready(function() {
                                 $('#spState' + data[key].states_system).popover({
                                     trigger: 'hover',
                                     html: true,
-                                    content: function () {
-                                        return $('#pop_detail').html();
-                                    }
+                                    content: function () { return $('#pop_detail').html(); }
                                 });
                             }
                         }
@@ -56,3 +51,31 @@ $(document).ready(function() {
     }
 
 });
+
+//Открыть выбранные системы
+function btnSel(){
+    let sel = []
+    for (let i=0; i<irrigLst.length; i++){
+        if ($('#chk' + irrigLst[i].states_system).prop('checked') == true){
+            sel.push($('#chk' + irrigLst[i].states_system).val());
+        }
+    }
+    switch (sel.length){
+        case 1:
+            window.open('/simple?first=1', '_self');
+            break;
+        case 2:
+            if (sel[0] == sel[1] && sel[0] != 0  && sel[1] != 0){
+                window.open('/simple?first=1&?second=4', '_self');
+            }
+            else{
+                $('#mTxt1').text('Выбранные системы не могут работать в паре')
+                $('#modAlert').modal('show')
+            }
+            break;
+        default:
+            $('#mTxt1').text('Вы можете выбрать не более двух систем');
+            $('#modAlert').modal('show');
+            break;
+    }
+}
