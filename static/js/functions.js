@@ -49,7 +49,6 @@ $(document).ready(function() {
             });
             break;
     }
-
 });
 
 //Открыть выбранные системы
