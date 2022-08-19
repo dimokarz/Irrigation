@@ -25,6 +25,7 @@ admin.site.index_title = 'Администрирование систем пол
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', valley.views.index, name='index'),
+    path('simple/', valley.views.simple, name='simple'),
     ### Video Servers
     path('videosrv_list/', trassir.views.videosrv_list, name='videosrv_list'),
     path('videosrv_list/<int:pk>', trassir.views.videosrv_detail, name='videosrv_list'),

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
+from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Systems, States
@@ -25,11 +26,19 @@ def states_list(request):
 ### index
 def index(request):
     systems = Systems.objects.all()
-    states = States.objects.all()
     header = 'Выбор систем полива'
     title = ' - Выбор'
-    return render(request, 'index.html', {'header': header, 'title': title, 'systems': systems, 'states': states})
+    return render(request, 'index.html', {'header': header, 'title': title, 'systems': systems})
+
 
 ### simple
 def simple(request):
-    pass
+    first = request.GET.get('first')
+    second = request.GET.get('second')
+    if second != '0':
+        systems = Systems.objects.all().in_bulk([first, second]).values()
+        states = States.objects.all().in_bulk([first, second]).values()
+    else:
+        systems = Systems.objects.all().in_bulk([first]).values()
+        states = States.objects.all().in_bulk([first]).values()
+    return render(request, 'simple.html', {'systems': systems, 'states': states})

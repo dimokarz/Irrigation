@@ -54,18 +54,21 @@ $(document).ready(function() {
 //Открыть выбранные системы
 function btnSel(){
     let sel = []
+    let duet = []
     for (let i=0; i<irrigLst.length; i++){
         if ($('#chk' + irrigLst[i].states_system).prop('checked') == true){
-            sel.push($('#chk' + irrigLst[i].states_system).val());
+            duet.push($('#chk' + irrigLst[i].states_system).val());
+            sel.push(irrigLst[i].states_system)
         }
     }
-    switch (sel.length){
+
+    switch (duet.length){
         case 1:
-            window.open('/simple?first=1', '_self');
+            window.open('/simple?first=' + sel[0] + '&second=0', '_self');
             break;
         case 2:
-            if (sel[0] == sel[1] && sel[0] != 0  && sel[1] != 0){
-                window.open('/simple?first=1&?second=4', '_self');
+            if (duet[0] == duet[1] && duet[0] != 0  && duet[1] != 0){
+                window.open('/simple?first=' + sel[0] + '&second=' + sel[1], '_self');
             }
             else{
                 $('#mTxt1').text('Выбранные системы не могут работать в паре')

@@ -1,5 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-    123
+
+    <div class="row">
+        {% for state in states %}
+            {% if state != None %}
+                <div class="col-lg-6 mx-auto">
+                    <div class="card shad_box">
+                        <div class="card-header" style="background: #e6e6e6;">
+                            {{ state.states_system }}
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Скорость" aria-label="Скорость" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary bi-keyboard" type="button" id="button-addon2"></button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Пролив" aria-label="Пролив" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary bi-keyboard" type="button" id="button-addon2"></button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                        <input type="text" class="form-control" placeholder="Время" aria-label="Время">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+
 {% endblock content %}
