@@ -5,27 +5,50 @@
     <div class="row">
         {% for state in states %}
             {% if state != None %}
-                <div class="col-lg-6 mx-auto">
+                <div class="col-6 mx-auto">
                     <div class="card shad_box">
                         <div class="card-header" style="background: #e6e6e6;">
                             {{ state.states_system }}
                         </div>
                         <div class="card-body">
+                            <div class="row border-bottom">
+                                <div class="col-4">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="inp-perc{{ state.states_system_id }}"
+                                               value="{{ state.status_perc }}%" aria-label="Скорость">
+                                        <button class="btn btn-primary bi-keyboard" type="button"
+                                                id="btn-perc{{ state.states_system_id }}"></button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" value="{{ state.status_depth }}mm" aria-label="Пролив" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary bi-keyboard" type="button" id="button-addon2"></button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                        <input type="text" class="form-control" placeholder="Время" aria-label="Время" readonly>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Скорость" aria-label="Скорость" aria-describedby="button-addon2">
-                                        <button class="btn btn-primary bi-keyboard" type="button" id="button-addon2"></button>
+                                    <div class="row" style="margin-top: 14px;">
+                                        <div class="col-12">
+                                            {% if state.states_dir == "N" %}
+                                                <span class="badge bg-danger" id="dirInd{{ state.states_system_id }}"
+                                                      style="width: 100px; font-size: 1em;">Стоп</span>
+                                            {% elif state.states_dir == "F" %}
+                                                <span class="badge bg-success" id="dirInd{{ valley.status_valley_id }}"
+                                                      style="width: 100px; font-size: 1em;">Вперёд</span>
+                                            {% elif state.states_dir == "R" %}
+                                                <span class="badge bg-success" id="dirInd{{ valley.status_valley_id }}"
+                                                      style="width: 100px; font-size: 1em;">Назад</span>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Пролив" aria-label="Пролив" aria-describedby="button-addon2">
-                                        <button class="btn btn-primary bi-keyboard" type="button" id="button-addon2"></button>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                        <input type="text" class="form-control" placeholder="Время" aria-label="Время">
+                                <div class="col-8">
+                                    123
                                 </div>
                             </div>
                         </div>

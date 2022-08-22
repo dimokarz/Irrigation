@@ -61,7 +61,6 @@ function btnSel(){
             sel.push(irrigLst[i].states_system)
         }
     }
-
     switch (duet.length){
         case 1:
             window.open('/simple?first=' + sel[0] + '&second=0', '_self');
