@@ -19,3 +19,12 @@
 .pop_detail{
     max-width: 600px;
 }
+
+.btn_fix {
+    width: 110px;
+    height: 60px;
+    font-size: 1.1em;;
+    font-weight: bold;
+    margin-bottom: 3px;
+    padding: 2px;
+}

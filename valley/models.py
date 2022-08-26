@@ -76,14 +76,14 @@ class KeyBoard(models.Model):
         verbose_name_plural = 'Клавиатура'
         ordering = ['pk']
 
-    key_name = models.CharField(max_length=15, primary_key=True, default='BtnX-', verbose_name='Id')
+    key_name = models.CharField(max_length=15, default='BtnXX-', verbose_name='Id')
     key_eng = models.CharField(max_length=20, verbose_name='Англ')
     key_rus = models.CharField(max_length=20, verbose_name='Рус')
     key_rele1 = models.IntegerField(null=True, verbose_name='Реле 1')
     key_rele2 = models.IntegerField(null=True, verbose_name='Реле 2')
     key_class = models.CharField(max_length=30, null=True, blank=True, verbose_name='Класс')
-    key_option1 = models.CharField(max_length=10, null=True, blank=True, verbose_name='Опция 1')
-    key_option2 = models.CharField(max_length=10, null=True, blank=True, verbose_name='Опция 2')
+    key_option1 = models.CharField(max_length=50, null=True, blank=True, verbose_name='Опция 1')
+    key_option2 = models.CharField(max_length=50, null=True, blank=True, verbose_name='Опция 2')
 
     def __str__(self):
         return self.key_name

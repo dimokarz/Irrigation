@@ -5,7 +5,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Systems, States, KeyBoard
 from .serializers import SystemsSerializer, StatesSerializer
-from .utils import btnList
 
 
 ### Системы полива
@@ -41,4 +40,5 @@ def simple(request):
         valList.append(second)
     systems = Systems.objects.all().in_bulk(valList).values()
     states = States.objects.all().in_bulk(valList).values()
-    return render(request, 'simple.html', {'systems': systems, 'states': states})
+    keyboard = KeyBoard.objects.filter(id__range=[25, 32])
+    return render(request, 'simple.html', {'systems': systems, 'states': states, 'keyboard': keyboard})
